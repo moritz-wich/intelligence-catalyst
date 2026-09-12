@@ -1,0 +1,90 @@
+---
+const title = "Intelligence Catalyst";
+const description =
+  "Thinking about what becomes possible when intelligence becomes abundant.";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <main>
+      <header>
+        <h1>Intelligence Catalyst</h1>
+        <p>{description}</p>
+      </header>
+
+      <nav>
+        <a href="/essays">Essays</a>
+        <a href="/notes">Notes</a>
+        <a href="/about">About</a>
+      </nav>
+
+      <section>
+        <h2>Essays</h2>
+        <p>
+          Thoughts on AI, software, products, organizations and
+          what becomes possible when intelligence becomes abundant.
+        </p>
+      </section>
+
+      <section>
+        <h2>Notes</h2>
+        <p>
+          Short observations and unfinished thoughts.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  header {
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  header p {
+    font-size: 1.25rem;
+    max-width: 650px;
+  }
+
+  nav {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  nav a {
+    color: inherit;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+</style>
