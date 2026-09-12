@@ -1,40 +1,71 @@
 ---
-const title = "Essays — Intelligence Catalyst";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-  </head>
+<BaseLayout title="Intelligence Catalyst">
+  <section class="hero">
+    <p class="eyebrow">INTELLIGENCE CATALYST</p>
 
-  <body>
-    <main>
-      <a href="/">← Intelligence Catalyst</a>
+    <h1>
+      Thinking about what becomes possible when intelligence becomes abundant.
+    </h1>
 
-      <h1>Essays</h1>
+    <p class="intro">
+      Essays and notes on AI, software, products, organizations, and the
+      changing economics of thinking.
+    </p>
 
-      <p>
-        Longer thoughts about AI, software, products,
-        organizations and the future of work.
-      </p>
-
-      <h2>Coming soon</h2>
-
-      <p>
-        The first essay is being written.
-      </p>
-    </main>
-  </body>
-</html>
+    <div class="actions">
+      <a href="/essays" class="primary">Read the essays →</a>
+      <a href="/about">About</a>
+    </div>
+  </section>
+</BaseLayout>
 
 <style>
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    font-family: system-ui, sans-serif;
-    line-height: 1.6;
+  .hero {
+    padding: 4rem 0 6rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 2rem;
+    color: #777;
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+  }
+
+  h1 {
+    max-width: 850px;
+    margin: 0;
+  }
+
+  .intro {
+    max-width: 620px;
+    margin-top: 2.5rem;
+    color: #666;
+    font-size: 1.15rem;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .actions a {
+    text-decoration: none;
+  }
+
+  .primary {
+    padding: 0.75rem 1rem;
+    border: 1px solid #191919;
+    background: #191919;
+    color: #fff;
+  }
+
+  .primary:hover {
+    background: #333;
   }
 </style>
