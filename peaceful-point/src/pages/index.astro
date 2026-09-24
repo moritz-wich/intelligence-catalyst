@@ -1,90 +1,72 @@
 ---
-const title = "Intelligence Catalyst";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
 const description =
   "Thinking about what becomes possible when intelligence becomes abundant.";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
-  </head>
+<BaseLayout title="Intelligence Catalyst" description={description}>
+  <section class="hero">
+    <p class="eyebrow">INTELLIGENCE CATALYST</p>
 
-  <body>
-    <main>
-      <header>
-        <h1>Intelligence Catalyst</h1>
-        <p>{description}</p>
-      </header>
+    <h1>Thinking about what becomes possible when intelligence becomes abundant.</h1>
 
-      <nav>
-        <a href="/essays">Essays</a>
-        <a href="/notes">Notes</a>
-        <a href="/about">About</a>
-      </nav>
+    <p class="intro">
+      Essays and notes on AI, software, products, organizations, and the
+      changing economics of thinking.
+    </p>
 
-      <section>
-        <h2>Essays</h2>
-        <p>
-          Thoughts on AI, software, products, organizations and
-          what becomes possible when intelligence becomes abundant.
-        </p>
-      </section>
-
-      <section>
-        <h2>Notes</h2>
-        <p>
-          Short observations and unfinished thoughts.
-        </p>
-      </section>
-    </main>
-  </body>
-</html>
+    <div class="actions">
+      <a href="/essays" class="primary">Read the essays <span aria-hidden="true">-></span></a>
+      <a href="/about">About</a>
+    </div>
+  </section>
+</BaseLayout>
 
 <style>
-  :global(*) {
-    box-sizing: border-box;
+  .hero {
+    padding: 4rem 0 6rem;
   }
 
-  :global(body) {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    line-height: 1.6;
-  }
-
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-
-  header {
-    margin-bottom: 3rem;
+  .eyebrow {
+    margin-bottom: 2rem;
+    color: #777;
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.14em;
   }
 
   h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+    max-width: 720px;
+    margin: 0;
   }
 
-  header p {
-    font-size: 1.25rem;
-    max-width: 650px;
+  .intro {
+    max-width: 620px;
+    margin-top: 2.5rem;
+    color: #666;
+    font-size: 1.15rem;
   }
 
-  nav {
+  .actions {
     display: flex;
-    gap: 2rem;
-    margin-bottom: 5rem;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
   }
 
-  nav a {
-    color: inherit;
+  .actions a {
+    text-decoration: none;
   }
 
-  section {
-    margin-bottom: 3rem;
+  .primary {
+    padding: 0.75rem 1rem;
+    border: 1px solid #191919;
+    background: #191919;
+    color: #fff;
+  }
+
+  .primary:hover {
+    background: #333;
   }
 </style>
