@@ -1,29 +1,45 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const essays = (await getCollection("essays")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
-<BaseLayout title="Intelligence Catalyst">
-  <section class="hero">
-    <p class="eyebrow">INTELLIGENCE CATALYST</p>
+<BaseLayout
+  title="Essays"
+  description="Essays on AI, software, products, organizations, and the changing economics of thinking."
+>
+  <section class="intro">
+    <p class="eyebrow">ESSAYS</p>
 
-    <h1>
-      Thinking about what becomes possible when intelligence becomes abundant.
-    </h1>
+    <h1>Ideas about what becomes possible when intelligence becomes abundant.</h1>
 
-    <p class="intro">
-      Essays and notes on AI, software, products, organizations, and the
+    <p class="lede">
+      Long-form thoughts on AI, software, products, organizations, and the
       changing economics of thinking.
     </p>
+  </section>
 
-    <div class="actions">
-      <a href="/essays" class="primary">Read the essays →</a>
-      <a href="/about">About</a>
-    </div>
+  <section class="essay-list" aria-label="Essays">
+    {essays.map((essay) => (
+      <article class="essay">
+        <p class="date">{essay.data.date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}</p>
+        <h2><a href={`/essays/${essay.id}`}>{essay.data.title}</a></h2>
+        <p class="description">{essay.data.description}</p>
+        <a class="read-link" href={`/essays/${essay.id}`}>Read essay <span aria-hidden="true">-></span></a>
+      </article>
+    ))}
   </section>
 </BaseLayout>
 
 <style>
-  .hero {
+  .intro {
     padding: 4rem 0 6rem;
   }
 
@@ -36,36 +52,62 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   }
 
   h1 {
-    max-width: 850px;
+    max-width: 720px;
     margin: 0;
   }
 
-  .intro {
+  .lede {
     max-width: 620px;
     margin-top: 2.5rem;
     color: #666;
     font-size: 1.15rem;
   }
 
-  .actions {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 3rem;
+  .essay-list {
+    border-top: 1px solid #deded9;
   }
 
-  .actions a {
+  .essay {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid #deded9;
+  }
+
+  .date {
+    margin: 0;
+    color: #777;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h2 {
+    margin: 0.75rem 0 0;
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  h2 a {
     text-decoration: none;
   }
 
-  .primary {
-    padding: 0.75rem 1rem;
-    border: 1px solid #191919;
-    background: #191919;
-    color: #fff;
+  h2 a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
   }
 
-  .primary:hover {
-    background: #333;
+  .description {
+    margin: 0.75rem 0 1.25rem;
+    color: #666;
+  }
+
+  .read-link {
+    font-size: 0.9rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .read-link:hover {
+    text-decoration: underline;
   }
 </style>
