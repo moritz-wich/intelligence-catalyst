@@ -41,6 +41,29 @@ const { Content } = await render(essay);
   </body>
 </html>
 
+<script>
+  import mermaid from "mermaid";
+
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: "strict",
+    theme: "neutral",
+  });
+
+  const blocks = document.querySelectorAll('pre[data-language="mermaid"]');
+
+  for (const block of blocks) {
+    const diagram = document.createElement("div");
+    diagram.className = "mermaid";
+    diagram.textContent = block.textContent ?? "";
+    block.replaceWith(diagram);
+  }
+
+  if (blocks.length > 0) {
+    await mermaid.run({ querySelector: ".mermaid" });
+  }
+</script>
+
 <style>
   main {
     max-width: 800px;
@@ -57,5 +80,13 @@ const { Content } = await render(essay);
   h1 {
     font-size: 2.8rem;
     line-height: 1.2;
+  }
+
+  .mermaid {
+    margin: 2rem 0;
+    overflow-x: auto;
+    padding: 1rem;
+    border: 1px solid #deded9;
+    background: #f7f7f5;
   }
 </style>
